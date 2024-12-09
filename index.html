@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12點遊戲 - 雙人對戰</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>12點遊戲 - 雙人對戰</h1>
+        <div class="game-info">
+            <div id="message"></div>
+            <div id="current-player"></div>
+        </div>
+
+        <div class="hands">
+            <div id="player1-hand" class="player-hand active">
+                <h2>玩家一手牌:</h2>
+                <div id="player1-cards"></div>
+                <p>點數: <span id="player1-points">0</span></p>
+                <div class="player-actions">
+                    <button class="hit-button" data-player="1">再抽一張牌</button>
+                    <button class="stand-button" data-player="1">停牌</button>
+                </div>
+            </div>
+
+            <div id="player2-hand" class="player-hand">
+                <h2>玩家二手牌:</h2>
+                <div id="player2-cards"></div>
+                <p>點數: <span id="player2-points">0</span></p>
+                <div class="player-actions">
+                    <button class="hit-button" data-player="2">再抽一張牌</button>
+                    <button class="stand-button" data-player="2">停牌</button>
+                </div>
+            </div>
+        </div>
+
+        <button id="restart-button" style="display: none;">重新開始</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

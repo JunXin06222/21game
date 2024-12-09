@@ -1,0 +1,299 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('bg.jpg');  /* 插入背景图片 */
+    background-size: cover;   /* 背景图片覆盖整个页面 */
+    background-position: center; /* 背景居中 */
+    background-attachment: fixed; /* 固定背景 */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #FFD700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.game-container {
+    background: linear-gradient(145deg, rgba(26, 86, 30, 0.95), rgba(28, 110, 34, 0.9));
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+}
+
+.hands {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+#player-hand, #dealer-hand {
+    width: 45%;
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    margin: 20px;
+    transition: all 0.3s ease;
+}
+
+#player-hand:hover, #dealer-hand:hover {
+    transform: scale(1.02);
+}
+
+#player-cards, #dealer-cards {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    line-height: 1.8;
+}
+
+#player-points, #dealer-points {
+    font-size: 1.25rem;
+    margin-top: 10px;
+}
+
+.card {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    min-width: 100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid #ddd;
+}
+
+.card.red {
+    color: #D40000;
+}
+
+.card.black {
+    color: #000;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 按钮区 */
+.player-actions button {
+    background: linear-gradient(145deg, #FFD700, #FFC000);
+    border: 2px solid #B8860B;
+    padding: 12px 25px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #1C6E22;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+.player-actions button:disabled {
+    background: linear-gradient(145deg, #cccccc, #999999);
+    border-color: #666666;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.player-actions button:hover:not(:disabled) {
+    background: linear-gradient(145deg, #FFC000, #FFD700);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+#restart-button {
+    background: linear-gradient(145deg, #ff4d4d, #ff0000);
+    border: 2px solid #cc0000;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 50px;
+    margin: 20px auto;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: none;  /* 初始隱藏 */
+}
+
+#restart-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+    background: linear-gradient(145deg, #ff0000, #ff4d4d);
+}
+
+#restart-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+}
+
+/* 添加閃光效果 */
+#restart-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+#message {
+    font-size: 1.5rem;
+    color: #FFD700;
+    margin: 10px 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+button {
+    font-weight: bold;
+}
+
+.player-hand {
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.player-hand.active {
+    opacity: 1;
+    transform: scale(1.05);
+    border: 2px solid #FFD700;
+}
+
+#current-player {
+    font-size: 1.5rem;
+    color: #FFD700;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+}
+
+.player-actions {
+    margin-top: 15px;
+}
+
+.player-hand button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 響應式設計 */
+@media screen and (max-width: 768px) {
+  .game-container {
+    width: 95%;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .hands {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #player1-hand, #player2-hand {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .player-actions button {
+    padding: 8px 15px;
+    font-size: 1rem;
+    margin: 5px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    font-size: 1.5rem;
+    padding: 10px;
+    min-width: 70px;
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .game-container {
+    padding: 15px;
+  }
+
+  .player-actions button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  #restart-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+  }
+
+  .card {
+    font-size: 1.2rem;
+    padding: 8px;
+    min-width: 60px;
+  }
+
+  #message {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+}
